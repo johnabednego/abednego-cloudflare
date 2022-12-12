@@ -9,6 +9,7 @@ const baseURL = "https://general.abednego.workers.dev/popular-domains";
 export const Domains = () => {
   let [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  useEffect(() => {
   const handleRequest = async () => {
     await axios.get(`${baseURL}`).then((response) => {
       setData(data = response.data);
@@ -17,11 +18,10 @@ export const Domains = () => {
     });
 
   }
-  useEffect(() => {
     handleRequest();
   }, []);
   return (
-    <div className='flex flex-col sm:flex-row justify-center w-full p-0 m-0 overflow-hidden ' style={{ "textAlign": "-webkit-center" }}>
+    <div className='flex flex-col justify-center w-full p-0 m-0 overflow-hidden sm:flex-row ' style={{ "textAlign": "-webkit-center" }}>
       <div className=' h-fit sm:h-screen w-full sm:w-[40%] md:w-[35%] lg:w-[30%] xl:w-[25%]'>
         <SideBar />
       </div>
@@ -41,9 +41,9 @@ export const Domains = () => {
               </div>
               <div className=' pb-3 border-l-[10px] border-l-[#D0650D] border-r-[10px] border-r-[#D0650D] border-t-[10px] border-t-[#D0650D] border-b-[50px] border-b-[#D0650D] -mt-1 drop-shadow-md h-fit bg-white w-[100%] sm:w-[90%] rounded-tr-[50px] rounded-tl-[50px] rounded-br-[50px] rounded-bl-[50px] '>
                 <div className=' flex text-[#022038] font-bold text-[20px] break-words '>
-                  <h1 className=' flex-1 '>Rank</h1>
+                  <h1 className='flex-1 '>Rank</h1>
                   <h1 className=' flex-1 border-l-[2px] border-r-[2px] border-[#022038] '>Domain</h1>
-                  <h2 className=' flex-1 '>Category</h2>
+                  <h2 className='flex-1 '>Category</h2>
                 </div>
                 <div className='h-[2px] bg-[#022038]'></div>
                 {data.rankingEntries.map(data => {

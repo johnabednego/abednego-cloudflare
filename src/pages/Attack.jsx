@@ -12,6 +12,7 @@ const baseURL = "https://general.abednego.workers.dev/attack-layer3";
 export const Attack = () => {
   let [data, setData] = useState(null);
   const [error, setError] = useState(null);
+  useEffect(() => {
   const handleRequest = async () => {
     await axios.get(`${baseURL}`).then((response) => {
       setData(data = response.data);
@@ -547,11 +548,10 @@ export const Attack = () => {
     }
 
   }
-  useEffect(() => {
     handleRequest();
   }, []);
   return (
-    <div className='flex flex-col sm:flex-row justify-center w-full p-0 m-0 overflow-hidden ' style={{ "textAlign": "-webkit-center" }}>
+    <div className='flex flex-col justify-center w-full p-0 m-0 overflow-hidden sm:flex-row ' style={{ "textAlign": "-webkit-center" }}>
       <div className=' h-fit sm:h-screen w-full sm:w-[40%] md:w-[35%] lg:w-[30%] xl:w-[25%]'>
         <SideBar />
       </div>
